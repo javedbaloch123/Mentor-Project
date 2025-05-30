@@ -1,9 +1,7 @@
 <script setup>
     import { RouterLink } from 'vue-router';
     import { useRoute } from 'vue-router';
-
-     
-
+ 
     const isActive = (routePath) =>{
        const route = useRoute();
        return route.path === routePath;
@@ -16,11 +14,11 @@
    <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
-      <a href="index.html" class="logo d-flex align-items-center me-auto">
+      <RouterLink to="/" class="logo d-flex align-items-center me-auto">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
         <h1 class="sitename">Mentor</h1>
-      </a>
+      </RouterLink>
 
       <nav id="navmenu" class="navmenu">
         <ul>

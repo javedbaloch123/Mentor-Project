@@ -2,6 +2,8 @@
       import axios from 'axios';
       import { reactive } from 'vue';
       import swal from 'sweetalert';
+      import Loading from 'vue-loading-overlay';
+      import 'vue-loading-overlay/dist/css/index.css';
     
          
       const state = reactive({
@@ -9,12 +11,14 @@
         email:'',
         subject:'',
         message:'',
-        errors: {}
+        errors: {},
+        isLoading: false
       })
  
 
     const submitForm = async() =>{
       try {
+        state.isLoading = true;
         const data ={
         name:state.name, 
         email:state.email, 
@@ -40,12 +44,15 @@
          
       } catch (error) {
         
+      } finally{
+         state.isLoading = false;
       }
     }
 </script>
 
 
 <template>
+     <Loading v-if="state.isLoading" :active="true" :is-full-page="true" />
      <main class="main">
 
     <!-- Page Title -->
