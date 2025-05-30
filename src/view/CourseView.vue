@@ -9,20 +9,28 @@ import { useRoute, useRouter } from "vue-router";
 import { onMounted, ref, reactive } from "vue";
 import axios from "axios";
 import router from "@/router";
+import Loading  from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/css/index.css';
 
 const route = useRoute();
 const CourseId = route.params.id;
+const isLoading = ref(true);
 
 const state = reactive({
   course: {},
 });
 
 onMounted(async () => {
-  const response = await axios.get(
-    `http://127.0.0.1:8000/api/courses/${CourseId}`
-  );
-  state.course = response.data;
-  console.log(state.course);
+  try {
+    const response = await axios.get(`http://127.0.0.1:8000/api/courses/${CourseId}`);
+    state.course = response.data;
+  } catch (error) {
+    console.log(error);
+  }finally{
+    isLoading.value = false;
+  }
+   
+   
 });
 
 const checkout = () =>{
@@ -32,6 +40,7 @@ const checkout = () =>{
 
 
 <template>
+  <Loading v-if="isLoading" :active="true" :is-full-page="true" />
   <main class="main">
     <!-- Page Title -->
     <div class="page-title" data-aos="fade">
@@ -70,13 +79,14 @@ const checkout = () =>{
               :src="'http://127.0.0.1:8000/images/' + state.course.image"
               class="img-fluid"
               alt=""
+              data-aos="fade-up"
             />
             <h3>{{ state.course.title }}</h3>
             <p>
               {{ state.course.desc }}
             </p>
           </div>
-          <div class="col-lg-4">
+          <div class="col-lg-4" data-aos="fade-up">
             <div
               class="course-info d-flex justify-content-between align-items-center"
             >

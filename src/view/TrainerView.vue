@@ -6,20 +6,30 @@
     import trainer5 from '@/assets/img/team/team-5.jpg';
     import trainer6 from '@/assets/img/team/team-6.jpg';
     import TrainerCard from '@/components/TrainerCard.vue';
+    import Loading from 'vue-loading-overlay';
+    import 'vue-loading-overlay/dist/css/index.css';
     import axios from 'axios';
     import { onMounted,ref } from 'vue';
 
     const trainer = ref([]);
+    const isLoading = ref(true);
     onMounted(async()=>{
-       const response = await axios.get('http://127.0.0.1:8000/api/trainers');
+      try {
+         const response = await axios.get('http://127.0.0.1:8000/api/trainers');
         trainer.value = response.data;
-        console.log(trainer.value)
+      } catch (error) {
+        console.log(error)
+      }finally{
+         isLoading.value = false;
+      }
+           
     })
 
 </script>
 
 
 <template>
+     <Loading v-if="isLoading" :active="true" :is-full-page="true" />
    <main class="main">
 
     <!-- Page Title -->
@@ -50,6 +60,7 @@
       <div class="container">
 
         <div class="row gy-5">
+        
          <TrainerCard v-for="trainer in trainer" :key="trainer.id" :trainer="trainer"/>
         </div>
 
