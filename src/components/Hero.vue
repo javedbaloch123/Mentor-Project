@@ -12,7 +12,7 @@
 
       <div class="container">
         <h2 data-aos="fade-up" data-aos-delay="100">Learning Today,<br>Leading Tomorrow</h2>
-        <p data-aos="fade-up" data-aos-delay="200">We are team of talented designers making websites with Bootstrap</p>
+        <p data-aos="fade-up" data-aos-delay="200">We are team of talented designers making websites with Clean Code</p>
         <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
           <RouterLink to="/Courses" class="btn-get-started">Get Started</RouterLink>
         </div>
