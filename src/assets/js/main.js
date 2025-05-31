@@ -1,14 +1,9 @@
-/**
-* Template Name: Mentor
-* Template URL: https://bootstrapmade.com/mentor-free-education-bootstrap-theme/
-* Updated: Aug 07 2024 with Bootstrap v5.3.3
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
 
 (function() {
   "use strict";
-
+ 
+  window.addEventListener('DOMContentLoaded',function(){
+  
   /**
    * Apply .scrolled class to the body as the page is scrolled down
    */
@@ -26,7 +21,7 @@
    * Mobile nav toggle
    */
   const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
-
+   
   function mobileNavToogle() {
     document.querySelector('body').classList.toggle('mobile-nav-active');
     mobileNavToggleBtn.classList.toggle('bi-list');
@@ -49,14 +44,14 @@
   /**
    * Toggle mobile nav dropdowns
    */
-  document.querySelectorAll('.navmenu .toggle-dropdown').forEach(navmenu => {
-    navmenu.addEventListener('click', function(e) {
-      e.preventDefault();
-      this.parentNode.classList.toggle('active');
-      this.parentNode.nextElementSibling.classList.toggle('dropdown-active');
-      e.stopImmediatePropagation();
-    });
-  });
+  // document.querySelectorAll('.navmenu .toggle-dropdown').forEach(navmenu => {
+  //   navmenu.addEventListener('click', function(e) {
+  //     e.preventDefault();
+  //     this.parentNode.classList.toggle('active');
+  //     this.parentNode.nextElementSibling.classList.toggle('dropdown-active');
+  //     e.stopImmediatePropagation();
+  //   });
+  // });
 
   /**
    * Preloader
@@ -133,4 +128,5 @@
 
   window.addEventListener("load", initSwiper);
 
+    });
 })();
