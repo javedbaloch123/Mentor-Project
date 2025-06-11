@@ -71,4 +71,5 @@
 
   <!-- Preloader -->
   <div id="preloader"></div>
+  
 </template>
